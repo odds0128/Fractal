@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <img alt='Fractal logo' src='~fractal_logo.svg' width='100px' height='100px'><br>
+    <MyHeader/>
     <ToDoList/>
   </div>
 </template>
 
 <script>
-import 'fractal_logo.svg'
-
-import ToDoList from './components/ToDoList.vue'
+import MyHeader from './components/MyHeader'
+import ToDoList from './components/ToDoList'
 
 export default {
   name: 'app',
   components: {
+    MyHeader,
     ToDoList
   },
 }
@@ -25,6 +25,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 0px;
 }
 </style>

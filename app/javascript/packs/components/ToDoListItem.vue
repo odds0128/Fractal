@@ -20,6 +20,13 @@ export default {
 
 <style scoped>
 li {
-    padding : 10px 0px 0px 0px
+    padding : 10px 0px 0px 0px;
+    margin-right: auto;
+}
+
+button {
+    font-size : 16px;
+    padding : 0 6.5px;
+    border-color: #aaaaaa;
 }
 </style>

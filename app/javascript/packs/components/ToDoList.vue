@@ -1,11 +1,6 @@
 <template>
-  <div>
-    <InputField
-      v-model="newTodoText"
-    />
-    <AddItemButton
-      @click="addTodo"
-    />
+  <div id='body'>
+
     <ul v-if="todos.length">
       <ToDoListItem
         v-for="todo in todos"
@@ -17,6 +12,14 @@
     <p v-else>
       Nothing left in the list. Add a new todo in the input above.
     </p>
+    <span id='add'>
+    <InputField
+      v-model="newTodoText"
+    />
+    <AddItemButton
+      @click="addTodo"
+    />
+    </span>
   </div>
 </template>
 
@@ -77,15 +80,15 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
+<style>
 ul {
   list-style-type: disc;
   padding: 0;
+  margin-left: 40px;
 }
-a {
-  color: #42b983;
+
+#add {
+  margin-left: 20px;
 }
+
 </style>

@@ -1,37 +1,39 @@
 <template>
   <div id='body'>
 
-    <ul v-if="todos.length">
+    <ul v-if="items.length">
       <ToDoListItem
-        v-for="todo in todos"
-        :key="todo.id"
-        :todo="todo"
-        @remove="removeTodo"
+        v-for="item in items"
+        :key="item.id"
+        :item="item"
+        @remove="removeitem"
       />
     </ul>
     <p v-else>
-      Nothing left in the list. Add a new todo in the input above.
+      Nothing left in the list. Add a new item in the input above.
     </p>
     <span id='add'>
     <InputField
-      v-model="newTodoText"
+      v-model="newText"
     />
     <AddItemButton
-      @click="addTodo"
+      @click="addItem"
     />
     </span>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 import InputField from './InputField'
 import ToDoListItem from './ToDoListItem'
 import AddItemButton from './AddItemButton'
 
-let nextTodoId = 0
+let nextItemId = 0
 
 export default {
-  name: 'ToDoList',
+  name: 'itemList',
   components : {
     InputField,
     ToDoListItem,
@@ -39,42 +41,41 @@ export default {
   },
   data () {
     return {
-      newTodoText: '',
-      todos : [
-        {
-					id: nextTodoId++,
-					text: 'Learn Vue'
-				},
-				{
-					id: nextTodoId++,
-					text: 'Learn about single-file components'
-				},
-				{
-					id: nextTodoId++,
-					text: 'Fall in love'
-				}
-      ]
+      newText: '',
+      items : []
     }             
   },
+  mounted : function () {
+    this.fetchItems();
+  },
   methods : {
-    addTodo () {
-      const trimmedText = this.newTodoText.trim();
+    addItem () {
+      const trimmedText = this.newText.trim();
       
-      console.log('trimmedText' + trimmedText + ', newTodo: ' + this.newTodoText )
+      console.log('trimmedText' + trimmedText + ', newitem: ' + this.newText )
 
       if ( trimmedText ) {
-        this.todos.push({
-          id: nextTodoId++,
+        this.items.push({
+          id: nextItemId++,
           text: trimmedText
         })
-        this.newTodoText = ''
+        this.newText = ''
       }
     },
-    removeTodo ( idToRemove ) {
-      this.todos = this.todos.filter( todo => {
-        return todo.id !== idToRemove
+    removeitem ( idToRemove ) {
+      this.items = this.items.filter( item => {
+        return item.id !== idToRemove
       })
-    }
+    },
+    fetchItems () {
+      axios.get('/api/items').then( (response) => {
+        for ( let i = 0; i < response.data.items.length; i++ ) {
+          this.items.push(response.data.items[i]);
+        }
+      }, (error) => {
+        console.log(error);
+      });
+    },
   },
 };
 </script>

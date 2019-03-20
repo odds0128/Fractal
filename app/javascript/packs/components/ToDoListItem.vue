@@ -1,7 +1,7 @@
 <template>
     <li>
-        {{ todo.text }}
-        <b-button variant="light" size=sm @click="$emit('remove', todo.id)">
+        {{ item.name }}
+        <b-button variant="light" size=sm @click="$emit('remove', item.id)">
             &times;
         </b-button>
     </li>
@@ -10,7 +10,7 @@
 <script>
 export default {
     props: {
-        todo: {
+        item: {
             type : Object,
             required: true
         }

@@ -1,3 +1,5 @@
+extractCSS = false
+
 module.exports = {
   test: /\.vue(\.erb)?$/,
   use: [{

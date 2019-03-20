@@ -1,5 +1,5 @@
 <template>
-  <b-button size=lg @click="$emit('click')">Add Item</b-button>
+  <b-button class='wave' size=lg @click="$emit('click')">Add Item</b-button>
 </template>
 
 <script>
@@ -9,6 +9,8 @@ export default {
 
 <style scoped>
   button {
-    margin-bottom: 3px;
+    margin-bottom: 4px;
+    font-size: 16px;
+    padding: 4px
   }
 </style>

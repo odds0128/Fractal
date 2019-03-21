@@ -8,7 +8,9 @@ gem 'rails', '~> 5.2.2'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3', '~> 1.3.6'
 # Use mysql2
-gem 'mysql2'
+gem 'mysql2', group: :development
+
+gem 'pg', group: :production
 
 gem 'ancestry'
 

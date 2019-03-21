@@ -26,6 +26,9 @@ test:
 
 production:
   <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: fractal_db/production
   username: <%= ENV['RAILS_DATABASE_USER'] %>
   password: <%= ENV['RAILS_DATABASE_PASSWORD'] %>

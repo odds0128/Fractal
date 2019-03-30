@@ -5,9 +5,12 @@
     "@rails/webpacker": "^4.0.2",
     "axios": "^0.18.0",
     "bootstrap-vue": "^2.0.0-rc.14",
+    "css-loader": "^2.1.1",
+    "jquery": "^3.3.1",
     "vue": "^2.6.9",
     "vue-loader": "^15.7.0",
-    "vue-template-compiler": "^2.6.9"
+    "vue-template-compiler": "^2.6.9",
+    "webpack": "^4.29.6"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.2.1"

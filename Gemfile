@@ -1,3 +1,4 @@
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -15,6 +16,10 @@ gem 'pg', group: :production
 gem 'ancestry'
 
 gem 'bootstrap-sass'
+
+gem 'devise'
+
+gem 'devise-i18n'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'

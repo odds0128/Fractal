@@ -22,6 +22,20 @@
   </div>
 </template>
 
+<script>
+import axios from 'axios'
+
+export default {
+  mounted : function () {
+    this.fetchUserEmail();
+  },
+  methods : {
+    fetchUserEmail () {
+    },
+  },
+}
+</script>
+
 <style scoped>
 div {
   background-color: #b6b6b6;

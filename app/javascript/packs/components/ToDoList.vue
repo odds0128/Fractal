@@ -6,7 +6,7 @@
         v-for="item in items"
         :key="item.id"
         :item="item"
-        @remove="removeitem"
+        @remove="removeItem"
       />
     </ul>
     <p v-else>
@@ -52,17 +52,22 @@ export default {
     addItem () {
       const trimmedText = this.newText.trim();
       
-      console.log('trimmedText' + trimmedText + ', newitem: ' + this.newText )
-
       if ( trimmedText ) {
-        this.items.push({
-          id: nextItemId++,
-          text: trimmedText
-        })
+        axios.post('/api/items',  { item: { name: trimmedText } }).then( (response) => {
+        
+        this.items.push( 
+          {
+            id: nextItemId++,
+            name: trimmedText
+          }
+        );
         this.newText = ''
+      }, (error) => {
+        console.log(error);
+      });
       }
     },
-    removeitem ( idToRemove ) {
+    removeItem ( idToRemove ) {
       this.items = this.items.filter( item => {
         return item.id !== idToRemove
       })
